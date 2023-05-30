@@ -1216,18 +1216,39 @@ public abstract class DefaultCodegenConfig implements CodegenConfig {
         return name;
     }
 
+    public String getDefaultTypeDeclaration(Schema schema) {
+        String schemaType = getSchemaType(schema);
+        if (typeMapping.containsKey(schemaType)) {
+            return typeMapping.get(schemaType);
+        }
+        return schemaType;
+    }
+
     /**
      * Output the type declaration of the property
      *
      * @param schema Schema Property object
      * @return a string presentation of the property type
      */
-    public String getTypeDeclaration(Schema schema) {
-        String schemaType = getSchemaType(schema);
-        if (typeMapping.containsKey(schemaType)) {
-            return typeMapping.get(schemaType);
+    public String getTypeDeclaration(Schema propertySchema) {
+        Schema inner;
+        if (propertySchema instanceof ArraySchema) {
+            ArraySchema arraySchema = (ArraySchema) propertySchema;
+            inner = arraySchema.getItems();
+            return this.getSchemaType(propertySchema) + "<" + this.getTypeDeclaration(inner) + ">";
+        } else if (propertySchema instanceof MapSchema && hasSchemaProperties(propertySchema)) {
+            inner = (Schema) propertySchema.getAdditionalProperties();
+            return "{ [key: string]: " + this.getTypeDeclaration(inner) + "; }";
+        } else if (propertySchema instanceof MapSchema && hasTrueAdditionalProperties(propertySchema)) {
+            inner = new ObjectSchema();
+            return "{ [key: string]: " + this.getTypeDeclaration(inner) + "; }";
+        } else if (propertySchema instanceof FileSchema || propertySchema instanceof BinarySchema) {
+            return "Blob";
+        } else if (propertySchema instanceof ObjectSchema) {
+            return "any";
+        } else {
+            return this.getDefaultTypeDeclaration(propertySchema);
         }
-        return schemaType;
     }
 
     /**
