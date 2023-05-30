@@ -29,26 +29,51 @@ public class CodegenHelper {
 
     static Map<String, String> getTypeMappings() {
         final Map<String, String> typeMapping = new HashMap<>();
-        typeMapping.put("array", "List");
-        typeMapping.put("map", "Map");
-        typeMapping.put("List", "List");
-        typeMapping.put("boolean", "Boolean");
-        typeMapping.put("string", "String");
-        typeMapping.put("int", "Integer");
-        typeMapping.put("float", "Float");
-        typeMapping.put("number", "BigDecimal");
+        // typeMapping.put("array", "List");
+        // typeMapping.put("map", "Map");
+        // typeMapping.put("List", "List");
+        // typeMapping.put("boolean", "Boolean");
+        // typeMapping.put("string", "String");
+        // typeMapping.put("int", "Integer");
+        // typeMapping.put("float", "Float");
+        // typeMapping.put("number", "BigDecimal");
+        // typeMapping.put("DateTime", "Date");
+        // typeMapping.put("long", "Long");
+        // typeMapping.put("short", "Short");
+        // typeMapping.put("char", "String");
+        // typeMapping.put("double", "Double");
+        // typeMapping.put("object", "Object");
+        // typeMapping.put("integer", "Integer");
+        // typeMapping.put("ByteArray", "byte[]");
+        // typeMapping.put("binary", "byte[]");
+        // typeMapping.put("file", "File");
+        // typeMapping.put("UUID", "UUID");
+        // typeMapping.put("BigDecimal", "BigDecimal");
+        typeMapping.put("Array", "Array");
+        typeMapping.put("array", "Array");
+        typeMapping.put("List", "Array");
+        typeMapping.put("boolean", "boolean");
+        typeMapping.put("string", "string");
+        typeMapping.put("int", "number");
+        typeMapping.put("float", "number");
+        typeMapping.put("number", "number");
+        typeMapping.put("BigDecimal", "number");
+        typeMapping.put("long", "number");
+        typeMapping.put("short", "number");
+        typeMapping.put("char", "string");
+        typeMapping.put("double", "number");
+        typeMapping.put("object", "any");
+        typeMapping.put("integer", "number");
+        typeMapping.put("Map", "any");
+        typeMapping.put("date", "string");
         typeMapping.put("DateTime", "Date");
-        typeMapping.put("long", "Long");
-        typeMapping.put("short", "Short");
-        typeMapping.put("char", "String");
-        typeMapping.put("double", "Double");
-        typeMapping.put("object", "Object");
-        typeMapping.put("integer", "Integer");
-        typeMapping.put("ByteArray", "byte[]");
-        typeMapping.put("binary", "byte[]");
-        typeMapping.put("file", "File");
-        typeMapping.put("UUID", "UUID");
-        typeMapping.put("BigDecimal", "BigDecimal");
+        //TODO binary should be mapped to byte array
+        // mapped to String as a workaround
+        typeMapping.put("binary", "string");
+        typeMapping.put("ByteArray", "string");
+        typeMapping.put("UUID", "string");
+        typeMapping.put("File", "any");
+        typeMapping.put("Error", "Error");
         return typeMapping;
     }
 
