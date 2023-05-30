@@ -110,6 +110,8 @@ import static io.swagger.codegen.v3.generators.CodegenHelper.getTypeMappings;
 import static io.swagger.codegen.v3.generators.CodegenHelper.initalizeSpecialCharacterMapping;
 import static io.swagger.codegen.v3.generators.handlebars.ExtensionHelper.getBooleanValue;
 
+import java.lang.System;
+
 public abstract class DefaultCodegenConfig implements CodegenConfig {
     protected static final Logger LOGGER = LoggerFactory.getLogger(DefaultCodegenConfig.class);
 
@@ -1219,8 +1221,12 @@ public abstract class DefaultCodegenConfig implements CodegenConfig {
     public String getDefaultTypeDeclaration(Schema schema) {
         String schemaType = getSchemaType(schema);
         if (typeMapping.containsKey(schemaType)) {
-            return typeMapping.get(schemaType);
+            
+            String after = typeMapping.get(schemaType);
+            System.out.println("schemaType: " + schemaType + " => " + after);
+            return after;
         }
+        System.out.println("schemaType is not changed" + schemaType);
         return schemaType;
     }
 
