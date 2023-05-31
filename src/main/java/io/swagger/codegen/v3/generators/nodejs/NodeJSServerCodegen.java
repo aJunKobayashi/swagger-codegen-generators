@@ -65,7 +65,7 @@ public class NodeJSServerCodegen extends DefaultCodegenConfig {
                 "controller.mustache",   // the template to use
                 ".js");       // the extension for each file to write
 
-        modelTemplateFiles.put("modelGeneric.mustache", ".ts");
+        modelTemplateFiles.put("model.mustache", ".ts");
 
 
         /*
