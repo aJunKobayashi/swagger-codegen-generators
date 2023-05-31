@@ -23,7 +23,7 @@
 {{/returnType}}
  **/
 // exports.{{{operationId}}} = function({{#parameters}}{{paramName}}{{#hasMore}},{{/hasMore}}{{/parameters}}) {
-exports.{{{operationId}}} = function({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}{{#hasMore}},{{/hasMore}} {{/allParams}}): 
+export const {{{operationId}}} = function({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}{{#hasMore}},{{/hasMore}} {{/allParams}}): 
   Promise<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}{}{{/returnType}}> {
   return new Promise(function(resolve, reject) {
   {{#returnType}}
