@@ -319,6 +319,7 @@ public abstract class DefaultCodegenConfig implements CodegenConfig {
     // override with any special post-processing
     @SuppressWarnings("static-method")
     public Map<String, Object> postProcessModels(Map<String, Object> objs) {
+        postProcessModelsEnum(objs).get("models");
         return objs;
     }
 
