@@ -65,7 +65,7 @@ public class NodeJSServerCodegen extends DefaultCodegenConfig {
                 "controller.mustache",   // the template to use
                 ".js");       // the extension for each file to write
 
-        modelTemplateFiles.put("model.mustache", ".ts");
+        // modelTemplateFiles.put("model.mustache", ".ts");
 
 
         /*
@@ -313,6 +313,7 @@ public class NodeJSServerCodegen extends DefaultCodegenConfig {
         }
         writeOptional(outputFolder, new SupportingFile("package.mustache", "", "package.json"));
         writeOptional(outputFolder, new SupportingFile("README.mustache", "", "README.md"));
+        writeOptional(outputFolder, new SupportingFile("model.mustache", "", "models.ts"));
         if (System.getProperty("noservice") == null) {
             apiTemplateFiles.put(
                     "service.mustache",   // the template to use
