@@ -314,6 +314,7 @@ public class NodeJSServerCodegen extends DefaultCodegenConfig {
         writeOptional(outputFolder, new SupportingFile("package.mustache", "", "package.json"));
         writeOptional(outputFolder, new SupportingFile("README.mustache", "", "README.md"));
         writeOptional(outputFolder, new SupportingFile("model.mustache", "", "models.ts"));
+        writeOptional(outputFolder, new SupportingFile("tsconfig.mustache", "", "tsconfig.json"));
         if (System.getProperty("noservice") == null) {
             apiTemplateFiles.put(
                     "service.mustache",   // the template to use
