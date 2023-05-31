@@ -130,7 +130,7 @@ public abstract class DefaultCodegenConfig implements CodegenConfig {
     protected Set<String> reservedWords = new HashSet<String>();
     protected Set<String> languageSpecificPrimitives = new HashSet<String>();
     protected Map<String, String> importMapping = new HashMap<String, String>();
-    protected String modelPackage = StringUtils.EMPTY;
+    protected String modelPackage = "model";
     protected String apiPackage = StringUtils.EMPTY;
     protected String fileSuffix;
     protected String modelNamePrefix = StringUtils.EMPTY;
