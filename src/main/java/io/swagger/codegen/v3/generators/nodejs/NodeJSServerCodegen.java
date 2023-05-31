@@ -315,7 +315,7 @@ public class NodeJSServerCodegen extends DefaultCodegenConfig {
         if (System.getProperty("noservice") == null) {
             apiTemplateFiles.put(
                     "service.mustache",   // the template to use
-                    "Service.js");       // the extension for each file to write
+                    "Service.ts");       // the extension for each file to write
         }
     }
 
