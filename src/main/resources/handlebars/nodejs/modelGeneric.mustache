@@ -13,8 +13,9 @@ export interface {{classname}} {{#parent}}extends {{{parent}}} {{/parent}}{
      * {{{description}}}
      * @type {{=<% %>=}}{<%&datatype%>}<%={{ }}=%>
      * @memberof {{classname}}
+     * abd
      */
-    {{name}}{{^required}}?{{/required}}: {{#isEnum}}{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{datatype}}}{{/isEnum}};
+    {{name}}{{^required}}?{{/required}}: {{#isEnum}}{{classname}}Enum.{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{datatype}}}{{/isEnum}};
 {{/vars}}
 }{{#hasEnums}}
 
@@ -22,7 +23,7 @@ export interface {{classname}} {{#parent}}extends {{{parent}}} {{/parent}}{
  * @export
  * @namespace {{classname}}
  */
-export namespace {{classname}} {
+export namespace {{classname}}Enum {
 {{#vars}}
     {{#isEnum}}
     /**
