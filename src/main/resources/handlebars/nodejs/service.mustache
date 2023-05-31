@@ -33,11 +33,11 @@ exports.{{{operationId}}} = function({{#allParams}}{{paramName}}{{^required}}?{{
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
-      resolve();
+      resolve({} as any);
     }
     {{/returnType}}
     {{^returnType}}
-    resolve();
+    resolve({} as any);
     {{/returnType}}
   });
 }
