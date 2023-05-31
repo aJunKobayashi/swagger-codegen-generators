@@ -1241,7 +1241,7 @@ public abstract class DefaultCodegenConfig implements CodegenConfig {
         if (propertySchema instanceof ArraySchema) {
             ArraySchema arraySchema = (ArraySchema) propertySchema;
             inner = arraySchema.getItems();
-            return this.getSchemaType(propertySchema) + "<" + this.getTypeDeclaration(inner) + ">";
+            return "Array" + "<" + this.getTypeDeclaration(inner) + ">";
         } else if (propertySchema instanceof MapSchema && hasSchemaProperties(propertySchema)) {
             inner = (Schema) propertySchema.getAdditionalProperties();
             return "{ [key: string]: " + this.getTypeDeclaration(inner) + "; }";
