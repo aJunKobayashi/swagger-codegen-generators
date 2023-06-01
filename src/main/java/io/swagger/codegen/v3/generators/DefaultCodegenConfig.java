@@ -1224,10 +1224,10 @@ public abstract class DefaultCodegenConfig implements CodegenConfig {
         if (typeMapping.containsKey(schemaType)) {
             
             String after = typeMapping.get(schemaType);
-            System.out.println("schemaType: " + schemaType + " => " + after);
+            // System.out.println("schemaType: " + schemaType + " => " + after);
             return after;
         }
-        System.out.println("schemaType is not changed" + schemaType);
+        // System.out.println("schemaType is not changed" + schemaType);
         return schemaType;
     }
 
@@ -1376,7 +1376,7 @@ public abstract class DefaultCodegenConfig implements CodegenConfig {
         if (schema.getXml() != null) {
             codegenModel.xmlPrefix = schema.getXml().getPrefix();
             codegenModel.xmlNamespace = schema.getXml().getNamespace();
-            codegenModel.xmlName = schema.getXml().getName();
+            // codegenModel.xmlName = schema.getXml().getName();
         }
 
         if (schema instanceof ArraySchema) {
@@ -1411,8 +1411,8 @@ public abstract class DefaultCodegenConfig implements CodegenConfig {
                                     .getPrefix();
                             codegenModel.xmlNamespace = innerModel.getXml()
                                     .getNamespace();
-                            codegenModel.xmlName = innerModel.getXml()
-                                    .getName();
+                            // codegenModel.xmlName = innerModel.getXml()
+                                    // .getName();
                         }
                         if (modelImplCnt++ > 1) {
                             LOGGER.warn(
@@ -1614,7 +1614,11 @@ public abstract class DefaultCodegenConfig implements CodegenConfig {
 
         processPropertySchemaTypes(name, codegenProperty, propertySchema);
 
-        codegenProperty.datatype = getTypeDeclaration(propertySchema);
+        String dataTypeWithModels = getTypeDeclaration(propertySchema);
+        codegenProperty.datatype = dataTypeWithModels;
+        codegenProperty.xmlName = (dataTypeWithModels + "").replace("models.", "");
+        System.out.println(dataTypeWithModels + "==>" + codegenProperty.xmlName);
+
         codegenProperty.dataFormat = propertySchema.getFormat();
 
         // this can cause issues for clients which don't support enums
@@ -1653,7 +1657,7 @@ public abstract class DefaultCodegenConfig implements CodegenConfig {
                 codegenProperty.getVendorExtensions().put(CodegenConstants.IS_XML_ATTRIBUTE_EXT_NAME, schema.getXml().getAttribute());
             }
             codegenProperty.xmlPrefix = schema.getXml().getPrefix();
-            codegenProperty.xmlName = schema.getXml().getName();
+            // codegenProperty.xmlName = schema.getXml().getName();
             codegenProperty.xmlNamespace = schema.getXml().getNamespace();
         }
         if (schema.getExtensions() != null && !schema.getExtensions().isEmpty()) {
@@ -1781,7 +1785,7 @@ public abstract class DefaultCodegenConfig implements CodegenConfig {
                         propertySchema.getXml().getWrapped() == null ? false : propertySchema.getXml().getWrapped());
                 codegenProperty.xmlPrefix= propertySchema.getXml().getPrefix();
                 codegenProperty.xmlNamespace = propertySchema.getXml().getNamespace();
-                codegenProperty.xmlName = propertySchema.getXml().getName();
+                // codegenProperty.xmlName = propertySchema.getXml().getName();
             }
             // handle inner property
             codegenProperty.maxItems = propertySchema.getMaxItems();
