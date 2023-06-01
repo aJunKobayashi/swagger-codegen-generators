@@ -23,11 +23,13 @@ import * as models from "../models"
  * returns {{{returnType}}}
 {{/returnType}}
  **/
-// exports.{{{operationId}}} = function({{#parameters}}{{paramName}}{{#hasMore}},{{/hasMore}}{{/parameters}}) {
+// exports.{{{operationId}}} = async function({{#parameters}}{{paramName}}{{#hasMore}},{{/hasMore}}{{/parameters}}) {
 export const {{{operationId}}} = function({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}{{#hasMore}},{{/hasMore}} {{/allParams}}): 
   Promise<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}{}{{/returnType}}> {
+    // TODO implement method
+  const response = {} as any
   return new Promise(function(resolve, reject) {
-    resolve({} as any);
+    resolve(response);
   });
 }
 
