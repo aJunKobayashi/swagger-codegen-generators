@@ -1117,7 +1117,7 @@ public abstract class DefaultCodegenConfig implements CodegenConfig {
                 datatype = property.get$ref();
                 if (datatype.indexOf("#/components/schemas/") == 0) {
                     datatype = datatype.substring("#/components/schemas/".length());
-                    return datatype;
+                    return "models." + datatype;
                 }
             } catch (Exception e) {
                 LOGGER.warn("Error obtaining the datatype from ref:" + property + ". Datatype default to Object");
@@ -1216,7 +1216,7 @@ public abstract class DefaultCodegenConfig implements CodegenConfig {
      */
     @SuppressWarnings("static-method")
     public String getTypeDeclaration(String name) {
-        return name;
+        return "models." + name;
     }
 
     public String getDefaultTypeDeclaration(Schema schema) {
