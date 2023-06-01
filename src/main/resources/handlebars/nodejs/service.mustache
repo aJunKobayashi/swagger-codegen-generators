@@ -4,7 +4,6 @@ import * as models from "../models"
 
 {{#operations}}
 {{#operation}}
-{{#contents}}
 
 /**
  {{#summary}}
@@ -45,6 +44,5 @@ export const {{{operationId}}} = function({{#allParams}}{{paramName}}{{^required
   });
 }
 
-{{/contents}}
 {{/operation}}
 {{/operations}}
