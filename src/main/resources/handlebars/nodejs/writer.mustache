@@ -11,7 +11,7 @@ var writeJson = exports.writeJson = function(response, arg1, arg2) {
   var code;
   var payload;
 
-  if(arg1 && arg1 instanceof ResponsePayload) {
+  if(arg1 && arg1.code !== undefined && arg1.payload !== undefined) {
     writeJson(response, arg1.payload, arg1.code);
     return;
   }
