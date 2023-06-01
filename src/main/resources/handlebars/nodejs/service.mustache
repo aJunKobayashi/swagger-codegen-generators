@@ -27,20 +27,7 @@ import * as models from "../models"
 export const {{{operationId}}} = function({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}{{#hasMore}},{{/hasMore}} {{/allParams}}): 
   Promise<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}{}{{/returnType}}> {
   return new Promise(function(resolve, reject) {
-  {{#returnType}}
-    var examples = {};
-    {{#examples}}
-    examples['{{contentType}}'] = {{{example}}};
-    {{/examples}}
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve({} as any);
-    }
-    {{/returnType}}
-    {{^returnType}}
     resolve({} as any);
-    {{/returnType}}
   });
 }
 
