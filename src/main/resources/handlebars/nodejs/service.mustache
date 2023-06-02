@@ -23,8 +23,7 @@ import * as models from "../models"
  * returns {{{returnType}}}
 {{/returnType}}
  **/
-// exports.{{{operationId}}} = async function({{#parameters}}{{paramName}}{{#hasMore}},{{/hasMore}}{{/parameters}}) {
-export const {{{operationId}}} = function({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}{{#hasMore}},{{/hasMore}} {{/allParams}}): 
+export const {{{operationId}}} = async function({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}{{#hasMore}},{{/hasMore}} {{/allParams}}): 
   Promise<
     {{#responses}}
     { code: {{code}}, payload: {{#dataType}}{{dataType}}{{/dataType}}{{^dataType}}{}{{/dataType}} } |
