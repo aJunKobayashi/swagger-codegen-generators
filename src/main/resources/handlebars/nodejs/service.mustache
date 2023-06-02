@@ -25,12 +25,14 @@ import * as models from "../models"
  **/
 // exports.{{{operationId}}} = async function({{#parameters}}{{paramName}}{{#hasMore}},{{/hasMore}}{{/parameters}}) {
 export const {{{operationId}}} = function({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}{{#hasMore}},{{/hasMore}} {{/allParams}}): 
-  Promise<{ code: number, payload: {{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}{}{{/returnType}} }> {
+  Promise<
+    {{#responses}}
+    { code: {{code}}, payload: {{#dataType}}{{dataType}}{{/dataType}}{{^dataType}}{}{{/dataType}} } |
+    {{/responses}}
+    { code: 501, payload: {} }
+   > {
     // TODO implement method
-  const response = {code: 501, payload: {} as any}
-  return new Promise(function(resolve, reject) {
-    resolve(response);
-  });
+  return Promise.resolve({code: 501, payload: {} })
 }
 
 {{/operation}}
