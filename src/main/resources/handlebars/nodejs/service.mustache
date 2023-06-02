@@ -26,7 +26,7 @@ import * as models from "../models"
 export const {{{operationId}}} = async function({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}{{#hasMore}},{{/hasMore}} {{/allParams}}): 
   Promise<
     {{#responses}}
-    { code: {{code}}, payload: {{#dataType}}{{dataType}}{{/dataType}}{{^dataType}}{}{{/dataType}} } |
+    { code: {{code}}, payload: {{#dataType}}{{{dataType}}}{{/dataType}}{{^dataType}}{}{{/dataType}} } |
     {{/responses}}
     { code: 501, payload: {} }
    > {
