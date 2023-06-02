@@ -2002,6 +2002,11 @@ public abstract class DefaultCodegenConfig implements CodegenConfig {
     protected ApiResponse findMethodResponse(ApiResponses responses) {
 
         String code = null;
+        ApiResponse response = responses.get("default");
+        if (response != null) {
+            responses.remove("default");
+            responses.put("200", response);
+        }
         for (String responseCode : responses.keySet()) {
             if (responseCode.startsWith("2") || responseCode.equals("default")) {
                 if (code == null || code.compareTo(responseCode) > 0) {
